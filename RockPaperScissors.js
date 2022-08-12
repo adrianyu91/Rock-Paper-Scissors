@@ -1,6 +1,18 @@
+var playerScore=0, computerScore=0;
 function game(){
     for(let i=0; i<5;i++){
+        console.log("round "+ (i+1));
         playRound(getPlayerChoice(),getComputerChoice());
+        console.log("player score: " + playerScore + " Computer score: " + computerScore);
+    }
+    if (playerScore>computerScore){
+        console.log("You have won!");
+    }
+    else if(computerScore>playerScore){
+        console.log("You have lost!");
+    }
+    else{
+        console.log("Tied");
     }
 }
 
@@ -30,7 +42,7 @@ function getComputerChoice() {
 function getPlayerChoice(){
     let playerChoice=prompt("Choose Rock Paper Scissors","");
     playerChoice=capitalize(playerChoice);
-    console.log("Player choice:"+ playerChoice);
+    console.log("Player choice: "+ playerChoice);
     return playerChoice;
 }
 
@@ -45,33 +57,37 @@ function capitalize(word){
 }
 
 function playRound(playerSelection, computerSelection){
-    let results;
     if(playerSelection===computerSelection){
         console.log("draw");
-        //return results="draw";
     }
     else if(playerSelection==="Rock"){
         if(computerSelection==="Paper"){
             console.log("Computer Wins");
+            computerScore++;
         }
         else{
             console.log("Player Wins");
+            playerScore++;
         }
     }
     else if(playerSelection==="Paper"){
         if(computerSelection==="Scissors"){
             console.log("Computer Wins");
+            computerScore++;
         }
         else{
             console.log("Player Wins");
+            playerScore++;
         }
     }
     else if(playerSelection==="Scissors"){
         if(computerSelection==="Rock"){
             console.log("Computer Wins");
+            computerScore++;
         }
         else{
             console.log("Player Wins");
+            playerScore++;
         }
     }
 }
